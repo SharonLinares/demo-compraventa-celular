@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.demo.dto.CelularDto;
 import com.example.demo.dto.CompraDto;
+import com.example.demo.dto.UsuarioDto;
 
 public class CompraService {
 
@@ -19,10 +20,10 @@ public class CompraService {
 		return compras;
 
 	}
-	
-	 public void crearCompra(CompraDto compra) {
-	        compras.add(compra);
-	    }
+
+	public void crearCompra(CompraDto compra) {
+		compras.add(compra);
+	}
 
 	public CompraDto getByNumeroCompra(int numeroCompra) {
 		for (CompraDto compra : compras) {
@@ -33,26 +34,22 @@ public class CompraService {
 		return null;
 	}
 
-	public void createCompra(String usuario, int celular, int cantidad) {
+	public void createCompra(UsuarioDto usuario, CelularDto celular, int cantidad) {
 
 		int numeroCompra = compras.size() + 1;
 		CompraDto compra = new CompraDto(numeroCompra, usuario, celular, cantidad);
+		compras.add(compra);
 
-		boolean compraExiste = false;
-		for (CompraDto compra1 : compras) {
-			if (compra1.getCelular() == celular && compra1.getUsuario().equals(usuario)) {
-				compraExiste = true;
-				break;
+	}
+
+	public CompraDto consultarbyMarcaModelo(String marca, String modelo) {
+		for (CompraDto compra : compras) {
+			CelularDto celular = compra.getCelular();
+			if (celular.getMarca().equals(marca) && celular.getModelo().equals(modelo)) {
+				return compra;
 			}
 		}
-
-		if (compraExiste) {
-			System.out
-					.println("La compra del celular con ID " + celular + " para el usuario " + usuario + " ya existe.");
-		} else {
-			compras.add(compra);
-			System.out.println("Compra creada con éxito: " + compra);
-		}
+		return null;
 	}
 
 	public void imprimirTodasLasCompras() {
@@ -65,12 +62,12 @@ public class CompraService {
 		}
 	}
 
-		public void imprimirCompraPorNumero(int numeroCompra) {
+	public void imprimirCompraPorNumero(int numeroCompra) {
 		CompraDto compra = getByNumeroCompra(numeroCompra);
-		if (compra != null) {
-			System.out.println(compra);
-		} else {
+		if (compra == null) {
 			System.out.println("Compra no encontrada con número: " + numeroCompra);
+		} else {
+			System.out.println(compra);
 		}
 	}
 }

@@ -3,15 +3,15 @@ package com.example.demo.dto;
 public class CompraDto {
 
 	private int numeroCompra;
-	private String usuario;
-	private int celular;
+	private UsuarioDto usuario;
+	private CelularDto celular;
 	private int cantidad;
 
 	public CompraDto() {
 		super();
 	}
 
-	public CompraDto(int numeroCompra, String usuario, int celular, int cantidad) {
+	public CompraDto(int numeroCompra, UsuarioDto usuario, CelularDto celular, int cantidad) {
 		super();
 		this.numeroCompra = numeroCompra;
 		this.usuario = usuario;
@@ -27,19 +27,19 @@ public class CompraDto {
 		this.numeroCompra = numeroCompra;
 	}
 
-	public String getUsuario() {
+	public UsuarioDto getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public void setUsuario(UsuarioDto usuario) {
 		this.usuario = usuario;
 	}
 
-	public int getCelular() {
+	public CelularDto getCelular() {
 		return celular;
 	}
 
-	public void setCelular(int celular) {
+	public void setCelular(CelularDto celular) {
 		this.celular = celular;
 	}
 

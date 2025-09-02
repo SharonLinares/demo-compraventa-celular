@@ -28,23 +28,44 @@ public class PersonaService {
 	}
 
 	public void createPersona(String documento, String nombreCompleto, String tipoPersona) {
-		PersonaDto persona = new PersonaDto(documento, nombreCompleto, tipoPersona);
-		boolean personaExiste = false;
 
-		for (PersonaDto persona1 : personas) {
-			if (persona1.getDocumento().equals(persona.getDocumento())
-					&& persona1.getNombreCompleto().equals(persona.getNombreCompleto())) {
-				personaExiste = true;
-				break;
-
-			}
-			if (personaExiste) {
-				System.out.println("ya existe la persona");
-			} else {
-				this.personas.add(persona);
-			}
+		PersonaDto personaExiste = getByDocumento(documento);
+		if (personaExiste == null) {
+			PersonaDto persona = new PersonaDto(documento, nombreCompleto, tipoPersona);
+			this.personas.add(persona);
+		} else {
+			System.out.println("ya existe esta persona");
 
 		}
+
+		
+		
+//		if (getByDocumento(documento) == null) {
+//		this.personas.add(new PersonaDto(documento, nombreCompleto, tipoPersona));
+//	} else {
+//		System.out.println("ya existe esta persona");
+//
+//	}
+
+		
+		
+		
+//		boolean personaExiste = false;
+//
+//		for (PersonaDto persona1 : personas) {
+//			if (persona1.getDocumento().equals(persona.getDocumento())
+//					&& persona1.getNombreCompleto().equals(persona.getNombreCompleto())) {
+//				personaExiste = true;
+//				break;
+//
+//			}
+//			if (personaExiste) {
+//				System.out.println("ya existe la persona");
+//			} else {
+//				this.personas.add(persona);
+//			}
+//
+//		}
 	}
 
 }

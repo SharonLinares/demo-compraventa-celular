@@ -18,7 +18,7 @@ public class UsuarioService {
 		return usuarios;
 	}
 
-	public UsuarioDto getByCodigo(int codigo) {
+	public UsuarioDto getByCodigo(String codigo) {
 		for (UsuarioDto usuario : usuarios) {
 			if (usuario.getCodigo().equals(codigo)) {
 				return usuario;
@@ -29,22 +29,29 @@ public class UsuarioService {
 	}
 
 	public void createUsuario(String codigo, String nombreCompleto) {
-		UsuarioDto usuario = new UsuarioDto(codigo, nombreCompleto);
-
-		boolean existeUsuario = false;
-		for (UsuarioDto usuario1 : usuarios) {
-			if (usuario.getCodigo().equals(usuario1.getCodigo())
-					&& usuario.getNombreCompleto().equals(usuario1.getNombreCompleto())) {
-				existeUsuario = true;
-				break;
-			}
-		}
-		if (existeUsuario) {
-			System.out.println("ya existe");
+		UsuarioDto existeUsuario = getByCodigo(codigo);
+		if (existeUsuario == null) {
+			UsuarioDto usuario = new UsuarioDto(codigo, nombreCompleto);
+			this.usuarios.add(usuario);
 
 		} else {
-			usuarios.add(usuario);
+			System.out.println("ya existe");
 		}
+
+//		boolean existeUsuario = false;
+//		for (UsuarioDto usuario1 : usuarios) {
+//			if (usuario.getCodigo().equals(usuario1.getCodigo())
+//					&& usuario.getNombreCompleto().equals(usuario1.getNombreCompleto())) {
+//				existeUsuario = true;
+//				break;
+//			}
+//		}
+//		if (existeUsuario) {
+//			System.out.println("ya existe");
+//
+//		} else {
+//			usuarios.add(usuario);
+//		}
 
 	}
 

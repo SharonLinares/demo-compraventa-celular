@@ -3,16 +3,16 @@ package com.example.demo.dto;
 public class VentaDto {
 
 	private int numeroVenta;
-	private String usuario;
-	private String persona;
-	private int celular;
+	private UsuarioDto usuario;
+	private PersonaDto persona;
+	private CelularDto celular;
 	private int cantidad;
 
 	public VentaDto() {
 		super();
 	}
 
-	public VentaDto(int numeroVenta, String usuario, String persona, int celular, int cantidad) {
+	public VentaDto(int numeroVenta, UsuarioDto usuario, PersonaDto persona, CelularDto celular, int cantidad) {
 		super();
 		this.numeroVenta = numeroVenta;
 		this.usuario = usuario;
@@ -29,27 +29,27 @@ public class VentaDto {
 		this.numeroVenta = numeroVenta;
 	}
 
-	public String getUsuario() {
+	public UsuarioDto getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public void setUsuario(UsuarioDto usuario) {
 		this.usuario = usuario;
 	}
 
-	public String getPersona() {
+	public PersonaDto getPersona() {
 		return persona;
 	}
 
-	public void setPersona(String persona) {
+	public void setPersona(PersonaDto persona) {
 		this.persona = persona;
 	}
 
-	public int getCelular() {
+	public CelularDto getCelular() {
 		return celular;
 	}
 
-	public void setCelular(int celular) {
+	public void setCelular(CelularDto celular) {
 		this.celular = celular;
 	}
 

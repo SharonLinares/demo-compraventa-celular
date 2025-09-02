@@ -1,22 +1,45 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.VentaDto;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.demo.dto.CelularDto;
+import com.example.demo.dto.PersonaDto;
+import com.example.demo.dto.UsuarioDto;
+import com.example.demo.dto.VentaDto;
 
 public class VentaService {
 
 	private List<VentaDto> ventas;
 
 	public VentaService() {
+		super();
 		this.ventas = new ArrayList<>();
+
 	}
 
-	public List<VentaDto> getAll() {
+	public void crearVenta(UsuarioDto usuario, PersonaDto persona, CelularDto celular, int cantidad) {
+
+		int numeroVenta = ventas.size() + 1;
+		VentaDto venta = new VentaDto(numeroVenta, usuario, persona, celular, cantidad);
+		this.ventas.add(venta);
+	}
+
+	public VentaDto consultarVentaPorMarcaYmodelo(String marca, String modelo) {
+		for (VentaDto venta : ventas) {
+			if (venta.getCelular().getMarca().equals(marca) && venta.getCelular().getModelo().equals(modelo)) {
+				return venta;
+			}
+		}
+		return null;
+
+	}
+
+	public List<VentaDto> totalVentas() {
 		return ventas;
 	}
 
-	public VentaDto imprimirNumeroVenta(int numeroVenta) {
+	public VentaDto consultarPornumeroVenta(int numeroVenta) {
 		for (VentaDto venta : ventas) {
 			if (venta.getNumeroVenta() == numeroVenta) {
 				return venta;
@@ -25,45 +48,13 @@ public class VentaService {
 		return null;
 	}
 
-	public List<VentaDto> todasLasVentas() {
-		return ventas;
-	}
-
-	public void crearVenta(String usuario, String persona, int celular, int cantidad) {
-
-		int numeroVenta = ventas.size() + 1;
-		VentaDto venta = new VentaDto(numeroVenta, usuario, persona, celular, cantidad);
-
-		boolean ventaExiste = false;
-		for (VentaDto v : ventas) {
-			if (v.getCelular() == celular && v.getUsuario().equals(usuario)) {
-				ventaExiste = true;
-				break;
+	public VentaDto imprimirTodasLasVentasbyDocumento(String documento) {
+		for (VentaDto venta : ventas) {
+			if (venta.getPersona().getDocumento().equals(documento)) {
+				return venta;
 			}
 		}
-
-		if (ventaExiste) {
-			System.out
-					.println("La venta del celular con ID " + celular + " para el usuario " + usuario + " ya existe.");
-		} else {
-			ventas.add(venta);
-			System.out.println("Venta creada con éxito: " + venta);
-		}
-	}
-	
-	public void imprimirVentasPorDocumento(String documento) {
-	    boolean ventasEncontradas = false;
-
-	    for (VentaDto venta : ventas) {
-	        if (venta.getPersona().equals(documento)) {
-	            System.out.println(venta);
-	            ventasEncontradas = true;
-	        }
-	    }
-
-	    if (!ventasEncontradas) {
-	        System.out.println("No se encontraron ventas para el documento: " + documento);
-	    }
+		return null;
 	}
 
 }
