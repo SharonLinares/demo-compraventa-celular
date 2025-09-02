@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import java.util.Objects;
+
 public class UsuarioDto {
 
 	private String codigo;
