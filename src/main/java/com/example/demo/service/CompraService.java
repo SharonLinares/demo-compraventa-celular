@@ -57,7 +57,9 @@ public class CompraService {
 			System.out.println("No hay compras registradas.");
 		} else {
 			for (CompraDto compra : compras) {
-				System.out.println(compra);
+				imprimirCompra(compra);
+				System.out.println();
+
 			}
 		}
 	}
@@ -67,7 +69,21 @@ public class CompraService {
 		if (compra == null) {
 			System.out.println("Compra no encontrada con número: " + numeroCompra);
 		} else {
-			System.out.println(compra);
+			imprimirCompra(compra);
+			System.out.println();
 		}
 	}
+
+	public void imprimirCompra(CompraDto compra) {
+		UsuarioDto usuario = compra.getUsuario();
+		System.out.println("el usuario es: " + usuario.getNombreCompleto());
+		System.out.println("el codigo del usuario es: " + usuario.getCodigo());
+		CelularDto celular = compra.getCelular();
+		System.out.println("el celular es: " + celular.getMarca());
+		System.out.println("el Modelo es: " + celular.getModelo());
+		System.out.println("el Valor es: " + celular.getValor());
+		System.out.println("la cantidad es: " + compra.getCantidad());
+		System.out.println("el numero de compra es: " + compra.getNumeroCompra());
+	}
+
 }
