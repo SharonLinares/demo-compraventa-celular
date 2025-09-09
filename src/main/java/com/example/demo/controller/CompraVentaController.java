@@ -30,6 +30,12 @@ public class CompraVentaController {
 
 		UsuarioDto usuario1 = usuarioService.getByCodigo("sharon02");
 		UsuarioDto usuario2 = usuarioService.getByCodigo("sergio23");
+
+		PersonaDto persona1 = personaService.getByDocumento("34gh");
+		PersonaDto persona2 = personaService.getByDocumento("3423ghh");
+
+		
+
 		compraService.createCompra(usuario1, celular2, 2);
 		compraService.createCompra(usuario2, celular1, 4);
 
@@ -39,6 +45,19 @@ public class CompraVentaController {
 		compraService.imprimirCompraPorNumero(1);
 		System.out.println();
 		compraService.imprimirCompraPorNumero(2);
+		
+
+        ventaService.crearVenta(usuario1, persona1, celular1, 1);
+        ventaService.crearVenta(usuario2, persona2, celular2, 3);
+        
+        
+        System.out.println();
+        System.out.println("***********lista de ventas***********");
+        ventaService.imprimirTodasLasVentas();
+        System.out.println("***********venta por numero***********");
+        ventaService.imprimirVentaPorNumero(1);
+        ventaService.imprimirVentaPorNumero(2);
+		
 
 	}
 

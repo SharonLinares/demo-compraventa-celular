@@ -40,12 +40,12 @@ public class PersonaService {
 
 		
 		
-//		if (getByDocumento(documento) == null) {
-//		this.personas.add(new PersonaDto(documento, nombreCompleto, tipoPersona));
-//	} else {
-//		System.out.println("ya existe esta persona");
-//
-//	}
+		if (getByDocumento(documento) == null) {
+		this.personas.add(new PersonaDto(documento, nombreCompleto, tipoPersona));
+	} else {
+		System.out.println("ya existe esta persona");
+
+	}
 
 		
 		

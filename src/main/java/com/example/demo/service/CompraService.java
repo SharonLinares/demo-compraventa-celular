@@ -21,10 +21,6 @@ public class CompraService {
 
 	}
 
-	public void crearCompra(CompraDto compra) {
-		compras.add(compra);
-	}
-
 	public CompraDto getByNumeroCompra(int numeroCompra) {
 		for (CompraDto compra : compras) {
 			if (compra.getNumeroCompra() == numeroCompra) {
