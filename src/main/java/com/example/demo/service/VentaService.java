@@ -52,7 +52,7 @@ public class VentaService {
 	}
 
 	public void imprimirventa(VentaDto venta) {
-
+		System.out.println("el numero de compra es: " + venta.getNumeroVenta());
 		UsuarioDto usuario = venta.getUsuario();
 		System.out.println("el usuario es: " + usuario.getNombreCompleto());
 		System.out.println("el codigo del usuario es: " + usuario.getCodigo());
@@ -64,7 +64,49 @@ public class VentaService {
 		System.out.println("el Modelo es: " + celular.getModelo());
 		System.out.println("el Valor es: " + celular.getValor());
 		System.out.println("la cantidad es: " + venta.getCantidad());
-		System.out.println("el numero de compra es: " + venta.getNumeroVenta());
+		double subtotal = celular.getValor() * venta.getCantidad();
+		System.out.println("el subtotal de la venta es :" + subtotal);
+		double descuentoInvitado = 0.05;
+		double descuentoVip = 0.1;
+		double descuentoPremiun = 0.2;
+		double total = 0;
+		double totalDescuento = 0;
+
+//		if (persona.getTipoPersona().equals("invitado")) {
+//			totalDescuento = subtotal * descuentoInvitado;
+//			total = subtotal - totalDescuento;
+//
+//		} else if (persona.getTipoPersona().equals("vip")) {
+//			totalDescuento = subtotal * descuentoVip;
+//			total = subtotal - totalDescuento;
+//
+//		} else if ((persona.getTipoPersona().equals("premiun"))) {
+//			totalDescuento = subtotal * descuentoPremiun;
+//			total = subtotal - totalDescuento;
+//		}
+
+		switch (persona.getTipoPersona()) {
+		case "invitado":
+			totalDescuento = subtotal * descuentoInvitado;
+			total = subtotal - totalDescuento;
+			break;
+		case "vip":
+			totalDescuento = subtotal * descuentoVip;
+			total = subtotal - totalDescuento;
+			break;
+		case "premiun":
+			totalDescuento = subtotal * descuentoPremiun;
+			total = subtotal - totalDescuento;
+			break;
+
+		default:
+			total = subtotal;
+			break;
+
+		}
+
+		System.out.println("valor del descuento es: " + totalDescuento);
+		System.out.println("valor total a pagar es: " + total);
 
 	}
 

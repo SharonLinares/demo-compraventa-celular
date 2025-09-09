@@ -23,10 +23,10 @@ public class CompraVentaController {
 
 		personaService.createPersona("34gh", "Diego linares", "vip");
 		personaService.createPersona("3423ghh", "alberto linares", "invitado");
-		personaService.createPersona("323ghh", "jun linares", "invitado");
+		personaService.createPersona("323ghh", "jun linares", "premiun");
 
 		CelularDto celular1 = new CelularDto("apple", "iphone 12", 1000);
-		CelularDto celular2 = new CelularDto("samsung", "s3", 700);
+		CelularDto celular2 = new CelularDto("samsung", "s3", 600);
 
 		UsuarioDto usuario1 = usuarioService.getByCodigo("sharon02");
 		UsuarioDto usuario2 = usuarioService.getByCodigo("sergio23");
